@@ -1,0 +1,23 @@
+.NavContainer {
+    background-color: #724C9F;
+    display: flex;
+    padding: 1% 0;
+    flex-wrap: wrap;
+
+    .Branding {
+        display: flex;
+        margin: auto auto auto 30px;
+
+        .NavTitulo {
+            align-self: center;
+            font-style: italic;
+        }
+
+        .icon {
+            max-width: 40px;
+            max-height: 40px;
+
+        }
+    }
+
+}

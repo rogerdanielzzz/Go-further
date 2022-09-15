@@ -1,0 +1,31 @@
+@use "./components/scss/abstracs/variables";
+
+
+*{
+    //Defaul Resets
+    font-family: var(--font-poppins);
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+
+
+
+    body{
+
+       // background: url(./img/bg1.jpg);
+      // background: url(https://i0.wp.com/assateguise.com/wp-content/uploads/2022/02/autumn-studio-PaM7SD5wM6g-unsplash-scaled.jpg?fit=1707%2C2560&ssl=1);
+
+       
+        background-size: cover;   
+        color: white;
+        li{
+            list-style: none;
+    
+        }
+        a{
+            text-decoration: none;
+        }
+
+    }
+    
+}
