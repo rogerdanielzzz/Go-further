@@ -1,8 +1,8 @@
 const axios = require('axios');
-const { Country } = require('../db.js');
+const { Country } = require('../../db.js');
 
 
-const getFromApi = async () => {
+const countriesDbLoader = async () => {
     
     axios.get("https://restcountries.com/v3/all").then((res)=>{
  
@@ -20,9 +20,9 @@ const getFromApi = async () => {
        });
        console.log("Db Created");
      }).catch((err)=> console.log(err))
-   
+    
    };
 
    module.exports={
-    getFromApi,
+    countriesDbLoader,
    }
