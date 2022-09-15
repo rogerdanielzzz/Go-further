@@ -5,7 +5,6 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('activity', {
 
-    // Deberia valdiar que sea exactamente 3
     name:{
         type: DataTypes.STRING,
         allowNull:false ,

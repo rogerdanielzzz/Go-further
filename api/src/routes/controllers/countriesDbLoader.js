@@ -1,28 +1,45 @@
-const axios = require('axios');
-const { Country } = require('../../db.js');
-
+const axios = require("axios");
+const { Country } = require("../../db.js");
 
 const countriesDbLoader = async () => {
-    
-    axios.get("https://restcountries.com/v3/all").then((res)=>{
- 
-      res.data.map(async (el) => {
-         await Country.create({
-           id: el.cca3,
-           name: el.name.common,
-           continent: el.region,
-           capital: el.capital && el.capital[0],
-           subregion: el.subregion || el.region,
-           area: el.area,
-           population: el.population,
-           flags: el.flags[0],
-         });
-       });
-       console.log("Db Created");
-     }).catch((err)=> console.log(err))
-    
-   };
+  let resApi = await axios.get("https://restcountries.com/v3/all");
+  const arrData = await resApi.data.map((el) => {
+    return {
+      id: el.cca3,
+      name: el.name.common,
+      continent: el.region,
+      capital: el.capital && el.capital[0],
+      subregion: el.subregion || el.region,
+      area: el.area,
+      population: el.population,
+      flags: el.flags[0],
+    };
+  });
+  const saver = () => {
+    arrData.map((el) => {
+      Country.findOrCreate({
+        where: {
+          name: el.name,
+          id: el.id,
+        },
+        defaults: {
+          continent: el.continent,
+          capital: el.capital,
+          subregion: el.subregion,
+          area: el.area,
+          population: el.population,
+          flags: el.flags,
+        },
+      }).catch((err) => {
+        console.log(err);
+      });
+    });
+  };
 
-   module.exports={
-    countriesDbLoader,
-   }
+  console.log("Db Created");
+  return saver();
+};
+
+module.exports = {
+  countriesDbLoader,
+};
