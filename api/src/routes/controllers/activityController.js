@@ -41,7 +41,8 @@ const data= await Activity.findAll({
   }
   
 })
-  if (!data) throw new Error("Sin actividades");
+console.log(data)
+  if (data.length<1) throw new Error("No activities registered");
   else return data
 };
 
