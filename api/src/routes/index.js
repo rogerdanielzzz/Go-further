@@ -2,7 +2,7 @@ const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const {getAllCountries, getByParam}= require("./controllers/countryController")
-
+const {createActivity, getAllActivities}=require("./controllers/activityController")
 
 
 const router = Router();
@@ -34,6 +34,22 @@ router.get('/countries/:idpais',async (req, res)=>{
         )
     }catch(e){
         res.status(404).json({error: e.message})
+    }
+})
+
+router.get("/activities",async(req,res)=>{
+    try{
+        res.status(201).json({mesagge: await getAllActivities()})
+    }catch(e){
+        res.status(400).json({error: e.message})
+    }
+})
+
+router.post("/activities",async(req,res)=>{
+    try{
+        res.status(201).json({mesagge: await createActivity(req.body)})
+    }catch(e){
+        res.status(400).json({error: e.message})
     }
 })
 
