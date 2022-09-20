@@ -1,11 +1,17 @@
-import  './App.scss';
-import Navbar from "./components/navbar/Navbar"
+import "./App.scss";
+import { Route } from "react-router-dom";
+import React from "react";
+
+import Navbar from "./components/navbar/Navbar";
+import CountriesContainer from "./components/countriesContainer/CountriesContainer.jsx";
 
 function App() {
   return (
     <div className="App">
-      <Navbar/>
-      <h1>Hello world</h1>
+      <Navbar />
+      <Route exact path="/">
+        <CountriesContainer />
+      </Route>
     </div>
   );
 }

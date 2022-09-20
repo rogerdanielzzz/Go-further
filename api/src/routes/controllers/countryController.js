@@ -29,6 +29,8 @@ const getAllCountries = async (query) => {
   //despues aplicamos filtros de sequalize en caso de existir query como parametro sino devolvemos todo la database en un array
   if (!query) {
     const countriesDb = await Country.findAll({
+      order: 
+        ['name'],
       include: [
         {
           model: Activity,

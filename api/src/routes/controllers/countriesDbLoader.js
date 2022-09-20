@@ -12,7 +12,7 @@ const countriesDbLoader = async () => {
       subregion: el.subregion || el.region,
       area: el.area,
       population: el.population,
-      flags: el.flags[0],
+      flags: el.flags[1] || el.flags[0],
     };
   });
   const saver = () => {
