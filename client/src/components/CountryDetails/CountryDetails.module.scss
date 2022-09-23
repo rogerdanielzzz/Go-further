@@ -1,0 +1,27 @@
+.detailsContainer{
+    background-color: #f3f3f3;
+    word-wrap: break-word;
+    height: 100%;
+  padding: 10% 0%;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    box-shadow: 0px 3px 30px #0000008B;
+ 
+    .flag{
+       border-radius: 5%;
+     
+
+    }
+
+    .textContainer{
+        text-align: center;
+        color: #555555;
+        .countryName{
+            color: black;
+            font-weight: bold;
+            font-size: 3rem;
+        }
+
+    }
+}

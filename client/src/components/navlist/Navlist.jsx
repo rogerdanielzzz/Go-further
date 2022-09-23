@@ -10,8 +10,8 @@ const Navlist = () => {
         <NavLink exact to="/">
           Countries
         </NavLink>
-        <NavLink to="/favs">Activities</NavLink>
-        <NavLink to="/favs">Create Activity</NavLink>
+        <NavLink to="/activities">Activities</NavLink>
+        <NavLink to="/create">Create Activity</NavLink>
       </li>
     </ul>
   );

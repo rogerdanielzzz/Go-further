@@ -60,7 +60,7 @@ const getAllCountries = async (query) => {
       ],
     });
 
-    if (filterDB < 1) throw new Error(`Cant find a country named ${query}`);
+    if (filterDB < 1) throw new Error(` 😭 Sorry our lovely duck cant find a country named ${query}`);
     else return filterDB;
   }
 };
