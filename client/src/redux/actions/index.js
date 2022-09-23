@@ -6,6 +6,9 @@ export const GET_COUNTRY_BY_QUERY = "GET_COUNTRY_BY_QUERY";
 export const FILTER_BY_ACTIVITY= "FILTER_BY_ACTIVITY";
 export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT";
 export const FILTER_BY_NAME = "FILTER_BY_NAME";
+export const ORDER_BY= "ORDER_BY";
+
+
 
 export const getAllCountries = () => {
     return function (dispatch) {
@@ -51,15 +54,22 @@ export const getAllCountries = () => {
     };
   };
   
-export const createActivty = (activity) => {
-    return { type:CREATE_ACTIVITY , payload: activity}
-};
 export const filterByName = (name) => {
   return { type: FILTER_BY_NAME , payload: name}
 };
 export const filterByContinet = (continent) => {
   return { type: FILTER_BY_CONTINENT , payload: continent}
+  
+};
+export const orderBy = (orientation) => {
+  return { type: ORDER_BY , payload: orientation}
+  
 };
 export const filterByActivity = (activity) => {
   return { type: FILTER_BY_ACTIVITY , payload: activity}
 };
+export const createActivty = (activity) => {
+  return { type:CREATE_ACTIVITY , payload: activity}
+};
+
+
