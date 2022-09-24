@@ -14,14 +14,12 @@ const SearchBar=()=> {
   
   const handleChange = (e) => { 
     setTexto(e.target.value)
-    dispatch(filterByName(texto))
-
-
+    dispatch(filterByName(e.target.value))
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(texto)
+    
     dispatch(getCountryByQuery(texto))
     
   }

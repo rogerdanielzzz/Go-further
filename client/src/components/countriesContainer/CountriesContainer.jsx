@@ -6,14 +6,19 @@ import CountryCard from '../CountryCard/CountryCard.jsx';
 import SearchBar from '../searchbar/SearchBar';
 
 const CountriesContainer = () => {
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
 const country= useSelector((state)=>state.countries)
 const findedCountries = useSelector((state)=> state.finded)
 
 useEffect(()=>{
-    document.title = "Go Further"
-dispatch(getAllCountries())
-},[]);
+
+    document.title = "Go Further" ;
+    dispatch(getAllCountries())
+ 
+
+},[dispatch]);
+
 return (
   <React.Fragment> 
     <SearchBar/>

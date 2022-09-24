@@ -1,3 +1,5 @@
+import Axios from 'axios'
+
 export const GET_ALL_COUNTRIES = "GET_ALL_COUNTRIES";
 export const GET_COUNTRY_DETAILS = "GET_COUNTRY_DETAILS";
 export const CREATE_ACTIVITY = "CREATE_ACTIVITY";
@@ -68,8 +70,18 @@ export const orderBy = (orientation) => {
 export const filterByActivity = (activity) => {
   return { type: FILTER_BY_ACTIVITY , payload: activity}
 };
-export const createActivty = (activity) => {
-  return { type:CREATE_ACTIVITY , payload: activity}
+export const createActivity = (activity) => {
+  return async function (dispatch) {
+    try {
+        let res = await axios.post("http://localhost:3001/activities", activity);
+        return dispatch({
+            type: CREATE_ACTIVITY,
+            payload: res.data,
+        })
+    } catch (error) {
+        throw(error);
+    }
+}
 };
 
 

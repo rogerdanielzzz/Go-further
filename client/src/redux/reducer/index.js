@@ -48,20 +48,23 @@ const rootReducer = (state = initialState, action) => {
                 activities: Array.from(new Set([...state.activities, action.payload])),
             };
         case FILTER_BY_NAME:
-            let arrFiltered = state.countries.filter((el) => el.name.toLowerCase().includes(action.payload.toLowerCase()))
-
+            let arrFiltered = state.countries.filter((el) => (el.name.toLowerCase()).includes(action.payload.toLowerCase()))
+            if (arrFiltered.length<1){
+                arrFiltered={error: `😭 Sorry our lovely duck cant find a country named ${action.payload}`}
+            }
             return {
                 ...state,
                 finded: arrFiltered,
             };
         case FILTER_BY_CONTINENT:
             let filterCont = state.countries.filter((el) => el.continent === action.payload)
-
+           
             return {
                 ...state, finded: filterCont
             };
 
         case ORDER_BY:
+
             let sorted;
             if (state.finded.length < 1) {
                 sorted = [...state.countries]
@@ -69,8 +72,6 @@ const rootReducer = (state = initialState, action) => {
 
             let key = JSON.parse(action.payload)[0];
             let value = JSON.parse(action.payload)[1];
-
-
 
             if (value === "asc") {
                 sorted.sort(function (a, b) {

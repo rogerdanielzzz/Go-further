@@ -1,6 +1,7 @@
 .toolsContainer{
+    display: flex;
+    flex-wrap: wrap;
     
-
     .selection{
         display: flex;
 justify-content: space-around;

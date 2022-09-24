@@ -10,19 +10,27 @@ const CountryDetails = () => {
   const dispatch = useDispatch();
   const country = useSelector((state) => state.countryDetail);
   useEffect(() => {
+
     dispatch(getCountryDetails(idPais));
-  }, []);
-  let formatedPopulation= country.population
+
+    
+  }, [dispatch, idPais]);
+
+  let area =country.area
+  let population= country.population
+  if (population) population= population.toLocaleString("de-DE")
+  if (area) area= area.toLocaleString("de-DE")
+
 
   return <div className={Style.detailsContainer}>
     <img className={Style.flag} src={country.flags} alt={`${country.name} flag`} />
     <div className={Style.textContainer}>
     <h3 className={Style.countryName}> {country.name} </h3>
     <h3 className={Style.id}> Code CCA3: {country.id} </h3>
-    <h3 className={Style.area}> Area: {country.area}  km²</h3>
+    <h3 className={Style.area}> Area: {area}  km²</h3>
     <h3 className={Style.continent}>Continent: {country.continent} </h3>
     <h3 className={Style.subRegion}>Sub Area: {country.subregion} </h3>
-    <h3 className={Style.population}>Population: {formatedPopulation} </h3>
+    <h3 className={Style.population}>Population: {population} </h3>
     <h3 className={Style.activities}>Activities: {country.activities} </h3>
   
     </div>

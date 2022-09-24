@@ -5,18 +5,13 @@ import Style from "./FilterAndSort.module.scss"
 
 const FilterAndSort = () => {
     const activitiesSelector = useSelector(state => state.activities)
-    
-
      const dispatch = useDispatch()
-
      function handleFilterContinent(e){
         dispatch(filterByContinet(e.target.value))
     }
-
     function handleFilterActivity(e){
         dispatch(filterByActivity(e.target.value))
     }
-    
     function handleOrder(e){
         dispatch(orderBy(e.target.value))
     }
