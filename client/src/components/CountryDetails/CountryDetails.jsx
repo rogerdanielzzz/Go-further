@@ -18,8 +18,14 @@ const CountryDetails = () => {
 
   let area =country.area
   let population= country.population
+  let actividades =country.activities
+  console.log(actividades)
+  let auxArr=[]
+
   if (population) population= population.toLocaleString("de-DE")
   if (area) area= area.toLocaleString("de-DE")
+  if (actividades) auxArr= [...actividades]
+
 
 
   return <div className={Style.detailsContainer}>
@@ -31,7 +37,8 @@ const CountryDetails = () => {
     <h3 className={Style.continent}>Continent: {country.continent} </h3>
     <h3 className={Style.subRegion}>Sub Area: {country.subregion} </h3>
     <h3 className={Style.population}>Population: {population} </h3>
-    <h3 className={Style.activities}>Activities: {country.activities} </h3>
+    <h3 className={Style.activities}>Activities:</h3>
+    <ul>{auxArr.length>0 && auxArr.map((el)=><li>{el.name}</li>)}</ul>
   
     </div>
     </div>;

@@ -6,7 +6,7 @@ import Style from './CreateSection.module.scss'
 
 function Form() {
 
-    const [input, setinput] = useState({name:"", difficulty:"",duration:"",season:"",image:"", country: []})
+    const [input, setinput] = useState({name:"", difficulty:"",duration:"",season:"",image:"", countries: []})
     const [errors, seterrors] = useState({})
     const [isSubmit, setisSubmit] = useState(false)
 
@@ -41,8 +41,8 @@ const validate = (values) => {
   if  (!values.season){
       errors.season = "The season is required"
       }
-  if  (!values.country || values.country.length === 0){
-      errors.country = "At least one country must be selected"
+  if  (!values.countries || values.countries.length === 0){
+      errors.countries = "At least one country must be selected"
       }
 // Validacion del objeto errors - setea isSubmit en True si todos los campos estan ok
   if ((Object.keys(errors).length) === 0){
@@ -83,19 +83,19 @@ const validate = (values) => {
   }
   function handleSelectcountry(e){
     e.preventDefault();
-    if(Object.values(input.country).includes(e.target.value)){
+    if(Object.values(input.countries).includes(e.target.value)){
       console.log( "Country already selected",
        )
     }
     else{
         setinput({
       ...input,
-      country: [...input.country,e.target.value]
+      countries: [...input.countries,e.target.value]
     })  
     }
     seterrors(validate({
       ...input,
-      country : [...input.country,e.target.value]
+      countries : [...input.countries,e.target.value]
     }))
    }
 
@@ -103,7 +103,7 @@ const validate = (values) => {
    function handleDeleteCountry(e){
     setinput({
       ...input,
-      country: input.country.filter((el) => el !== e)
+      countries: input.countries.filter((el) => el !== e)
     })
   }
 
@@ -153,7 +153,7 @@ const validate = (values) => {
                         <option name="Summer" value="Summer">Summer</option>
                         <option name="Winter" value="Winter">Winter</option>
                         <option name="Spring" value="Spring">Spring</option>
-                        <option name="Autum" value="Autum">Autum</option>
+                        <option name="Autumn" value="Autumn">Autumn</option>
                     </select>
                     {
                         <p className={Style.errorText}>{errors.season}</p>
@@ -173,11 +173,11 @@ const validate = (values) => {
                         }
                     </select>
                     {
-                        <p className={Style.errorText}>{errors.country}</p>
+                        <p className={Style.errorText}>{errors.countries}</p>
                     }
-                    {input.country.length > 0 &&
+                    {input.countries.length > 0 &&
                         <ul className={Style.countriesList}>
-                            {input.country.map((el) =>
+                            {input.countries.map((el) =>
                                 <div className={Style.listContainer}>
                                     <li>{el}</li>
                                     <button type='button' className={Style.deleteButton} onClick={() => handleDeleteCountry(el)}>X</button>

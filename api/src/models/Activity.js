@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
 
         
     },
-    dificulty:{
+    difficulty:{
         type: DataTypes.INTEGER,
         allowNull:false,
         validate:{
@@ -29,6 +29,13 @@ module.exports = (sequelize) => {
         ),
         allowNull:false,
         
+    },
+    image:{
+        type: DataTypes.STRING,
+      validate:{
+        isUrl: true,
+      }
+
     }
 
     

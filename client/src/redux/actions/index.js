@@ -73,7 +73,7 @@ export const filterByActivity = (activity) => {
 export const createActivity = (activity) => {
   return async function (dispatch) {
     try {
-        let res = await axios.post("http://localhost:3001/activities", activity);
+        let res = await Axios.post("http://localhost:3001/activities", activity);
         return dispatch({
             type: CREATE_ACTIVITY,
             payload: res.data,
