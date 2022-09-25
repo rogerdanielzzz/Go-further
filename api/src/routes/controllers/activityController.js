@@ -1,4 +1,4 @@
-const { Country, Activity, activities_countries } = require("../../db.js");
+const { Country, Activity } = require("../../db.js");
 
 const createActivity = async (obj) => {
   const { name, difficulty, duration, season, countries, image } = obj;
@@ -48,11 +48,31 @@ const data= await Activity.findAll({
 
 
 
+const deleteActivityById= async(el)=>{
+  const activityFinder = await Activity.findOne({
+    where: {
+      id: el,
+    },
+  });
+  
+  if(!activityFinder){
+    throw new Error("cante find an activity to delete")
+  }else{
+    await activityFinder.destroy()
+    return "Activity Deleted"
+    
+  }
+
+}
+
+
+
 
 
 
 
 module.exports = {
   createActivity,
-  getAllActivities
+  getAllActivities,
+  deleteActivityById
 };

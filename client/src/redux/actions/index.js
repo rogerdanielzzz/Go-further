@@ -9,6 +9,7 @@ export const FILTER_BY_ACTIVITY= "FILTER_BY_ACTIVITY";
 export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT";
 export const FILTER_BY_NAME = "FILTER_BY_NAME";
 export const ORDER_BY= "ORDER_BY";
+export const DELETE_ACTIVTY_BY_ID= "DELETE_ACTIVTY_BY_ID";
 
 
 
@@ -83,5 +84,21 @@ export const createActivity = (activity) => {
     }
 }
 };
+
+export const deleteActivityById = (id) => {
+  return async function (dispatch) {
+    try {
+        let res = await Axios.delete(`http://localhost:3001/activities/${id}`);
+        return dispatch({
+            type: DELETE_ACTIVTY_BY_ID,
+            payload: res.data,
+        })
+    } catch (error) {
+        throw(error);
+    }
+}
+};
+
+
 
 

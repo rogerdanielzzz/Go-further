@@ -8,6 +8,7 @@ import {
     FILTER_BY_CONTINENT,
     FILTER_BY_NAME,
     ORDER_BY,
+    DELETE_ACTIVTY_BY_ID
 
 
 } from "../actions/index.js";
@@ -45,7 +46,7 @@ const rootReducer = (state = initialState, action) => {
         case CREATE_ACTIVITY:
             return {
                 ...state,
-                activities: action.payload,
+
             };
         case FILTER_BY_NAME:
             let arrFiltered = state.countries.filter((el) => (el.name.toLowerCase()).includes(action.payload.toLowerCase()))
@@ -60,11 +61,11 @@ const rootReducer = (state = initialState, action) => {
             };
         case FILTER_BY_CONTINENT:
             let filterCont;
-            if (action.payload==="All"){
-                filterCont= state.countries 
-                
-            }else{
-             filterCont = state.countries.filter((el) => el.continent === action.payload)
+            if (action.payload === "All") {
+                filterCont = state.countries
+
+            } else {
+                filterCont = state.countries.filter((el) => el.continent === action.payload)
             }
             console.log(filterCont)
             return {
@@ -75,60 +76,66 @@ const rootReducer = (state = initialState, action) => {
         case FILTER_BY_ACTIVITY:
 
             let filterAct;
-            if (action.payload==="All"){
-                filterAct= state.countries 
-                
-            }else{
-          
-             filterAct  =  state.countries.filter(e => e.activities && e.activities.map(c => c.name).includes(action.payload))
-         
-        }
+            if (action.payload === "All") {
+                filterAct = state.countries
 
-      
-            return{
-                ...state,
-                finded : filterAct
+            } else {
+
+                filterAct = state.countries.filter(e => e.activities && e.activities.map(c => c.name).includes(action.payload))
+
             }
-        case ORDER_BY:
 
-            let sorted;
-            state.finded.length < 1?  sorted = [...state.countries] :  sorted = [...state.finded]
 
-            let key = JSON.parse(action.payload)[0];
-            let value = JSON.parse(action.payload)[1];
-
-            if (value === "asc") {
-                sorted.sort(function (a, b) {
-                    if (a[key] > b[key]) {
-                        return 1;
-                    }
-                    if (a[key] < b[key]) {
-                        return -1
-                    }
-                    return 0
-                })
-            }
-            if (value === "desc") {
-                sorted.sort(function (a, b) {
-                    if (a[key] > b[key]) {
-                        return -1;
-                    }
-                    if (a[key] < b[key]) {
-                        return 1
-                    }
-                    return 0
-                })
-            }
             return {
                 ...state,
-                finded: sorted
+                finded: filterAct
             };
 
-
-        default:
+        case DELETE_ACTIVTY_BY_ID:
             return {
-                ...state
-            };
+                ...state,
+                activities: state.activities.filter((el) => el.id !== action.payload)
+            }
+            case ORDER_BY:
+
+                let sorted;
+                state.finded.length < 1 ? sorted = [...state.countries] : sorted = [...state.finded]
+
+                let key = JSON.parse(action.payload)[0];
+                let value = JSON.parse(action.payload)[1];
+
+                if (value === "asc") {
+                    sorted.sort(function (a, b) {
+                        if (a[key] > b[key]) {
+                            return 1;
+                        }
+                        if (a[key] < b[key]) {
+                            return -1
+                        }
+                        return 0
+                    })
+                }
+                if (value === "desc") {
+                    sorted.sort(function (a, b) {
+                        if (a[key] > b[key]) {
+                            return -1;
+                        }
+                        if (a[key] < b[key]) {
+                            return 1
+                        }
+                        return 0
+                    })
+                }
+                return {
+                    ...state,
+                    finded: sorted
+                };
+
+
+            default:
+                return {
+                    ...state
+                };
 
 
     }

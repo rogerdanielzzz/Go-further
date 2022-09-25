@@ -104,7 +104,7 @@ let validate=(value)=>{
                 <div className={Style.textContainer}><h1>Create Your Activity</h1></div>
                 <form className={Style.formContainer} onSubmit={e => handlesubmit(e)}>
                     <label>What Activity?:</label><br />
-                    <input  autoCapitalize= "sentences" placeholder="Activity name.." type="text" name="name" input={input.name} onChange={(e) => handleChange(e)} />
+                    <input   placeholder="Activity name.." type="text" name="name" input={input.name} onChange={(e) => handleChange(e)} />
                     {
                         <p className={Style.errorText}>{errors.name}</p>
                     }

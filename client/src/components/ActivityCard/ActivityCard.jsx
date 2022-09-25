@@ -8,18 +8,14 @@ import Spring from "../../img/spring1.jpg"
 
 
 
-const CountryCard = (props) => {
+const ActivityCard = (props) => {
     let image= props.image
     if(!props.image){
         if(props.season=== "Summer") image= summer
         if(props.season=== "Autumn") image= Autumn 
         if(props.season=== "Winter") image= Winter
         if(props.season=== "Spring") image= Spring
-
-
-
     }
-
 
 return (
 <div className={Style.container}>
@@ -31,7 +27,7 @@ return (
     <h3 className={Style.subRegion}>Duration: {props.duration} Hours </h3>
     <h3 className={Style.subRegion}>Countries Avalaible: </h3>
     {props.countries.map((el)=><h3 key={el.id}>{el.name}</h3>)} 
-    <button type="button"  className={Style.deleteButton}>
+    <button type="button"  className={Style.deleteButton} onClick={props.onDelete}>
         Delete Acticity
       </button>
     </div>
@@ -39,4 +35,4 @@ return (
 )
 }
 
-export default CountryCard
+export default ActivityCard
