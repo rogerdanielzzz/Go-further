@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { createActivity, getAllCountries} from "../../redux/actions/index.js"
+import {errorsChecker} from "../Utilities/utilities"
 import Style from './CreateSection.module.scss'
 
 function Form() {
@@ -15,42 +16,19 @@ function Form() {
 
     useEffect(()=>{
       dispatch(getAllCountries())
-    },[])
+    },[dispatch])
     const countriesSelector = useSelector((state) => state.countries)
 
-const validate = (values) => {
-  const errors = {};
-  const urlValidator = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|png)/g
-  const numberValidator =   /^[1-9][0-9]*$/
-  if  (!values.name) {
-      errors.name = "An Activity name is required";
-     }
-  if  (!values.difficulty){
-      errors.difficulty = "Difficulty is required"
-      } 
-  if  (!values.duration){
-      errors.duration = "Duration is required"
-      }
-  
-    if (!numberValidator.test(values.duration)){
-        errors.duration = "Please select a valid Duration: between 1 to 10 hours, Remember, duration cannot be negative"
-      }
-  if (!urlValidator.test(values.image) ){
-      errors.image = "The image must be in url format"
-      }
-  if  (!values.season){
-      errors.season = "The season is required"
-      }
-  if  (!values.countries || values.countries.length === 0){
-      errors.countries = "At least one country must be selected"
-      }
-// Validacion del objeto errors - setea isSubmit en True si todos los campos estan ok
-  if ((Object.keys(errors).length) === 0){
+
+
+let validate=(value)=>{
+  let errores= errorsChecker(value)
+  if ((Object.keys(errores).length) === 0){
     setisSubmit(true)
-  };
-  return errors 
-    }
-//Input Handlers: 
+  }
+  return  errores
+}
+
   function handleChange(e){
     setinput({
       ...input,
@@ -84,7 +62,7 @@ const validate = (values) => {
   function handleSelectcountry(e){
     e.preventDefault();
     if(Object.values(input.countries).includes(e.target.value)){
-      console.log( "Country already selected",
+      alert( "Country already selected",
        )
     }
     else{
@@ -99,22 +77,22 @@ const validate = (values) => {
     }))
    }
 
-//Delete Countries selected
    function handleDeleteCountry(e){
     setinput({
       ...input,
       countries: input.countries.filter((el) => el !== e)
     })
   }
-
-//Handle submit Validation:
   async function handlesubmit(e) {
     e.preventDefault();
     seterrors(validate(setinput))
     if(Object.keys(errors).length === 0 && isSubmit){
+      if(input.image ===""){
+        input.image= null;
+      }
       dispatch(createActivity(input))
-      console.log(input)
-    navigate.push("/countries")
+      
+    navigate.push("/activities")
   }
     e.preventDefault()
    }
@@ -125,8 +103,8 @@ const validate = (values) => {
             <div className={Style.boxContainer}>
                 <div className={Style.textContainer}><h1>Create Your Activity</h1></div>
                 <form className={Style.formContainer} onSubmit={e => handlesubmit(e)}>
-                    <label>Name:</label><br />
-                    <input autoComplete="off" placeholder="activity name.." type="text" name="name" input={input.name} onChange={(e) => handleChange(e)} />
+                    <label>What Activity?:</label><br />
+                    <input  autoCapitalize= "sentences" placeholder="Activity name.." type="text" name="name" input={input.name} onChange={(e) => handleChange(e)} />
                     {
                         <p className={Style.errorText}>{errors.name}</p>
                     }
@@ -143,7 +121,7 @@ const validate = (values) => {
                         <p className={Style.errorText}>{errors.difficulty}</p>
                     }
                     <label>How many hours?:</label><br />
-                    <input type="number" name='duration' placeholder='duration in hours' input={input.duration} onChange={(e) => handleChange(e)} />
+                    <input type="number" name='duration' placeholder='Duration in hours' input={input.duration} onChange={(e) => handleChange(e)} />
                     {
                         <p className={Style.errorText}>{errors.duration}</p>
                     }
@@ -158,8 +136,8 @@ const validate = (values) => {
                     {
                         <p className={Style.errorText}>{errors.season}</p>
                     }
-                    <label>Image Url:</label><br />
-                    <input autoComplete="off" type="text" name='image' placeholder='Enter your url' input={input.image} onChange={(e) => handleChange(e)} />
+                    <label>Image Url (no required) :</label><br />
+                    <input  type="text" name='image' placeholder='Enter your url' input={input.image} onChange={(e) => handleChange(e)} />
                     {
                         <p className={Style.errorText}>{errors.image}</p>
                     }
@@ -167,8 +145,8 @@ const validate = (values) => {
                     <select defaultValue={'DEFAULT'} onChange={(e) => handleSelectcountry(e)}>
                         <option disabled value="DEFAULT ">Select Country</option>
                         {
-                            countriesSelector.map((e, i) =>
-                                (<option key={i} value={e.name}>{e.name}</option>)
+                            countriesSelector.map((el) =>
+                                (<option key={el.id}  value={el.name}>{el.name}</option>)
                             )
                         }
                     </select>
@@ -177,9 +155,9 @@ const validate = (values) => {
                     }
                     {input.countries.length > 0 &&
                         <ul className={Style.countriesList}>
-                            {input.countries.map((el) =>
-                                <div className={Style.listContainer}>
-                                    <li>{el}</li>
+                            {input.countries.map((el, index) =>
+                                <div key={index} className={Style.listContainer}>
+                                    <li key={index}>{el}</li>
                                     <button type='button' className={Style.deleteButton} onClick={() => handleDeleteCountry(el)}>X</button>
                                 </div>)}
                         </ul>}

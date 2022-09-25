@@ -1,5 +1,7 @@
 .detailsContainer{
     background-color: #f3f3f3;
+    background-image: url(../../img/bgx.jpg);
+    background-size: cover;
     word-wrap: break-word;
     height: 100%;
   padding: 10% 0%;
@@ -10,13 +12,17 @@
  
     .flag{
        border-radius: 5%;
-     
+        min-height: 30%;
+        min-width: 30%;
 
     }
 
     .textContainer{
+        padding: 2%;
+        border-radius: 20px;
+        background-color: #ffffff95;
         text-align: center;
-        color: #555555;
+        color: #333333;
         .countryName{
             color: black;
             font-weight: bold;

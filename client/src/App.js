@@ -2,15 +2,17 @@ import "./App.scss";
 import { Route } from "react-router-dom";
 import React from "react";
 
-import Navbar from "./components/navbar/Navbar";
+import Navbar from "./components/navbar/Navbar.jsx";
 import CountriesContainer from "./components/countriesContainer/CountriesContainer.jsx";
-import CountryDetails from "./components/CountryDetails/CountryDetails";
-import CreateSection from "./components/CreateSection/CreateSection";
-import ActivitiesSection from "./components/ActivitiesSection/ActivitiesSection";
+import CountryDetails from "./components/CountryDetails/CountryDetails.jsx";
+import CreateSection from "./components/CreateSection/CreateSection.jsx";
+import ActivitiesSection from "./components/ActivitiesSection/ActivitiesSection.jsx"
 
 function App() {
   return (
     <div className="App">
+
+      
       <Navbar />
       <Route exact path="/">
         <CountriesContainer />

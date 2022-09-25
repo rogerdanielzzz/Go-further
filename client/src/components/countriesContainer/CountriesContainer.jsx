@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Style from './CountriesContainer.module.scss'
-import{getAllCountries} from "../../redux/actions/index.js"
+import{getAllCountries, getAllActivities} from "../../redux/actions/index.js"
 import { useDispatch, useSelector } from "react-redux";
 import CountryCard from '../CountryCard/CountryCard.jsx';
 import SearchBar from '../searchbar/SearchBar';
@@ -13,8 +13,12 @@ const findedCountries = useSelector((state)=> state.finded)
 
 useEffect(()=>{
 
-    document.title = "Go Further" ;
+    document.title = "Go Further | Countries" ;
     dispatch(getAllCountries())
+    dispatch(getAllActivities())
+    return{
+
+    }
  
 
 },[dispatch]);

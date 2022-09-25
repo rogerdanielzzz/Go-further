@@ -39,7 +39,7 @@ router.get('/countries/:idpais',async (req, res)=>{
 
 router.get("/activities",async(req,res)=>{
     try{
-        res.status(201).json({mesagge: await getAllActivities()})
+        res.status(200).json(await getAllActivities())
     }catch(e){
         res.status(400).json({error: e.message})
     }

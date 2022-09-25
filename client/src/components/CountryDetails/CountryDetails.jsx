@@ -38,7 +38,7 @@ const CountryDetails = () => {
     <h3 className={Style.subRegion}>Sub Area: {country.subregion} </h3>
     <h3 className={Style.population}>Population: {population} </h3>
     <h3 className={Style.activities}>Activities:</h3>
-    <ul>{auxArr.length>0 && auxArr.map((el)=><li>{el.name}</li>)}</ul>
+    <ul>{auxArr.length>0 && auxArr.map((el)=><li>You can {el.name} in {el.season}</li>)}</ul>
   
     </div>
     </div>;

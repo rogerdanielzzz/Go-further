@@ -45,30 +45,54 @@ const rootReducer = (state = initialState, action) => {
         case CREATE_ACTIVITY:
             return {
                 ...state,
-                activities: Array.from(new Set([...state.activities, action.payload])),
+                activities: action.payload,
             };
         case FILTER_BY_NAME:
             let arrFiltered = state.countries.filter((el) => (el.name.toLowerCase()).includes(action.payload.toLowerCase()))
-            if (arrFiltered.length<1){
-                arrFiltered={error: `😭 Sorry our lovely duck cant find a country named ${action.payload}`}
+            if (arrFiltered.length < 1) {
+                arrFiltered = {
+                    error: `😭 Sorry our lovely duck cant find a country named ${action.payload}`
+                }
             }
             return {
                 ...state,
                 finded: arrFiltered,
             };
         case FILTER_BY_CONTINENT:
-            let filterCont = state.countries.filter((el) => el.continent === action.payload)
-           
+            let filterCont;
+            if (action.payload==="All"){
+                filterCont= state.countries 
+                
+            }else{
+             filterCont = state.countries.filter((el) => el.continent === action.payload)
+            }
+            console.log(filterCont)
             return {
                 ...state, finded: filterCont
             };
 
+
+        case FILTER_BY_ACTIVITY:
+
+            let filterAct;
+            if (action.payload==="All"){
+                filterAct= state.countries 
+                
+            }else{
+          
+             filterAct  =  state.countries.filter(e => e.activities && e.activities.map(c => c.name).includes(action.payload))
+         
+        }
+
+      
+            return{
+                ...state,
+                finded : filterAct
+            }
         case ORDER_BY:
 
             let sorted;
-            if (state.finded.length < 1) {
-                sorted = [...state.countries]
-            } else sorted = [...state.finded]
+            state.finded.length < 1?  sorted = [...state.countries] :  sorted = [...state.finded]
 
             let key = JSON.parse(action.payload)[0];
             let value = JSON.parse(action.payload)[1];

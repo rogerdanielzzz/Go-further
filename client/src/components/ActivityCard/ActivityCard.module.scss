@@ -1,0 +1,53 @@
+.container{
+    width: 20%;
+    height: auto;
+    word-wrap: break-word;
+    margin: 1%;
+    padding: 1%;
+    border-radius: 2%;
+    text-align: center;
+
+    transition: all 0.6s ease  ;
+    &:hover{
+            background-color: #724C9F95;
+
+        transform: translateY(-10px);
+		box-shadow: 0px 3px 30px #0000008B;
+    }
+    .flag{
+       border-radius: 5%;
+     width: 200px;
+     height: 140px;
+    }
+
+    .textContainer{
+        text-align: center;
+        color: #555555;
+        .countryName{
+            color: black;
+            font-weight: bold;
+            font-size: 1.6rem;
+        }
+
+    }
+
+    .deleteButton{
+        border: solid #5C19AE;
+        border-radius: 10rem;
+        padding: .5rem 1rem;
+        color: #FFF;
+        background-color: #5C19AE;
+        transition: ease 0.4s;
+        font-size: 1rem;
+        ;
+        font-family: var(--font-poppins);
+  
+        background-color: #5C19AE;
+        ;
+  
+        &:hover {
+            border-color: red;
+          background-color: red;
+        }
+    }
+}

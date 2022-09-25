@@ -8,10 +8,10 @@ const navbar = () => {
   return (
     <div className={Style.NavContainer}>
       <Link to="/">
-      <h3 className={Style.Branding}>
+      <div className={Style.Branding}>
         <img className={Style.icon} src={icon} alt="Icon" />
-        <p className={Style.NavTitulo}>Go Further </p>
-      </h3>
+        <h3 className={Style.NavTitulo}>Go Further </h3>
+      </div>
       </Link>
       <Navlist />
     </div>

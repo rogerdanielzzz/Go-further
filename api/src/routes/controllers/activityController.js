@@ -1,15 +1,16 @@
 const { Country, Activity, activities_countries } = require("../../db.js");
 
 const createActivity = async (obj) => {
-  const { name, difficulty, duration, season, countries } = obj;
-let nameCheck= name.toLowerCase();
-
+  const { name, difficulty, duration, season, countries, image } = obj;
+let nameCheck= name.charAt(0).toUpperCase() + name.slice(1);
+console.log(nameCheck)
   if (name && difficulty && duration && season && countries) {
     const [activity, created] = await Activity.findOrCreate({
       where: {
         name: nameCheck,
       },
       defaults: {
+        image,
         difficulty,
         duration,
         season,
@@ -41,7 +42,6 @@ const data= await Activity.findAll({
   }
   
 })
-console.log(data)
   if (data.length<1) throw new Error("No activities registered");
   else return data
 };

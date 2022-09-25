@@ -78,7 +78,7 @@ const getByParam = async (par) => {
       include: [
         {
           model: Activity,
-          attributes: ["name"], // se relacionan las actividades de cada país
+          attributes: ["name","season"], // se relacionan las actividades de cada país
           through: {
             attributes: [],
           },
