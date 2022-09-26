@@ -6,8 +6,7 @@ const Navlist = () => {
   return (
     <ul className={Style.listContainer}>
       <li className={Style.listItem}>
-        
-        <NavLink exact to="/">
+        <NavLink exact to="/countries">
           Countries
         </NavLink>
         <NavLink to="/activities">Activities</NavLink>

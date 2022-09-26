@@ -1,29 +1,26 @@
-.detailsContainer{
+.detailsContainer {
     background-color: #f3f3f3;
     background-image: url(../../img/bgx.jpg);
     background-size: cover;
     word-wrap: break-word;
     height: 100%;
-  padding: 10% 0%;
+    padding: 10% 0%;
     display: flex;
     justify-content: space-evenly;
     align-content: center;
     box-shadow: 0px 3px 30px #0000008B;
- 
-    .flag{
-       border-radius: 5%;
+    .flag {
+        border-radius: 5%;
         min-height: 30%;
         min-width: 30%;
-
     }
-
-    .textContainer{
+    .textContainer {
         padding: 2%;
         border-radius: 20px;
         background-color: #ffffff95;
         text-align: center;
         color: #333333;
-        .countryName{
+        .countryName {
             color: black;
             font-weight: bold;
             font-size: 3rem;

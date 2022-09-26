@@ -1,27 +1,19 @@
-.toolsContainer{
+.toolsContainer {
     display: flex;
     flex-wrap: wrap;
-    
-    .selection{
-        display: flex;
-justify-content: space-around;
-align-items: center;
 
-        .bar{
+    .selection {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .bar {
             cursor: pointer;
             margin-left: 10px;
             border: solid #5C19AE;
             border-radius: 10rem;
             padding: .5rem 1rem;
             color: #FFF;
-            background-color: #5C19AE;
-            transition: ease 0.4s;
             font-size: 1rem;
-            ;
-            font-family: var(--font-poppins);
-      
-            background-color: #5C19AE;
-            ;
             color: #5C19AE;
             background-color: white;
         }

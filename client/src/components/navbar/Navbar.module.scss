@@ -4,17 +4,14 @@
     flex-wrap: wrap;
     padding: 1% 0;
     flex-wrap: wrap;
-
     .Branding {
         display: flex;
         margin: auto auto auto 30px;
-
         .NavTitulo {
             color: white;
             align-self: center;
             font-style: italic;
         }
-
         .icon {
             max-width: 40px;
             max-height: 40px;

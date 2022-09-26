@@ -13,13 +13,14 @@ function App() {
     <div className="App">
 
       
-      <Navbar />
-      <Route exact path="/">
-        <CountriesContainer />
-      </Route>
+      <Navbar/>
       <Route exact path="/countries/:idPais">
         <CountryDetails/>
       </Route>
+      <Route exact path="/countries">
+        <CountriesContainer />
+      </Route>
+     
       <Route exact path="/create">
         <CreateSection/>
       </Route>

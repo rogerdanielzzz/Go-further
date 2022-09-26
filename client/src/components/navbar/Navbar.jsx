@@ -7,11 +7,11 @@ import { Link } from "react-router-dom";
 const navbar = () => {
   return (
     <div className={Style.NavContainer}>
-      <Link to="/">
-      <div className={Style.Branding}>
-        <img className={Style.icon} src={icon} alt="Icon" />
-        <h3 className={Style.NavTitulo}>Go Further </h3>
-      </div>
+      <Link to="/countries">
+        <div className={Style.Branding}>
+          <img className={Style.icon} src={icon} alt="Icon" />
+          <h3 className={Style.NavTitulo}>Go Further </h3>
+        </div>
       </Link>
       <Navlist />
     </div>

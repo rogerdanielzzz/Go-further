@@ -8,24 +8,33 @@ import {
     FILTER_BY_CONTINENT,
     FILTER_BY_NAME,
     ORDER_BY,
-    DELETE_ACTIVTY_BY_ID
+    DELETE_ACTIVTY_BY_ID,
+    ERROR_CLEANER
 
 
 } from "../actions/index.js";
 
 const initialState = {
+    error: {},
     countries: [],
     finded: [],
     countryDetail: {},
     activities: [],
-    activitiesAuxiliar:0,
+    activitiesAuxiliar: 0,
 };
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
+        case ERROR_CLEANER:
+            return {
+                ...state,
+                error: {},
+
+            };
         case GET_ALL_COUNTRIES:
             return {
                 ...state,
+                finded: action.payload,
                 countries: action.payload,
             };
         case GET_COUNTRY_DETAILS:
@@ -48,32 +57,37 @@ const rootReducer = (state = initialState, action) => {
             return {
 
                 ...state,
-                activitiesAuxiliar: state.activitiesAuxiliar-1,
+                activitiesAuxiliar: state.activitiesAuxiliar - 1,
 
 
             };
+
         case FILTER_BY_NAME:
-            let arrFiltered = state.countries.filter((el) => (el.name.toLowerCase()).includes(action.payload.toLowerCase()))
+
+            let arrFiltered = state.finded.filter((el) => (el.name.toLowerCase()).includes(action.payload.toLowerCase()))
             if (arrFiltered.length < 1) {
                 arrFiltered = {
                     error: `😭 Sorry our lovely duck cant find a country named ${action.payload}`
                 }
-            }
-            return {
-                ...state,
-                finded: arrFiltered,
-            };
+                return {
+                    ...state,
+                    error: arrFiltered,
+                };
+            } else
+                return {
+                    ...state,
+                    countries: arrFiltered,
+                };
         case FILTER_BY_CONTINENT:
             let filterCont;
             if (action.payload === "All") {
-                filterCont = state.countries
+                filterCont = state.finded
 
             } else {
-                filterCont = state.countries.filter((el) => el.continent === action.payload)
+                filterCont = state.finded.filter((el) => el.continent === action.payload)
             }
-            console.log(filterCont)
             return {
-                ...state, finded: filterCont
+                ...state, countries: filterCont
             };
 
 
@@ -81,66 +95,66 @@ const rootReducer = (state = initialState, action) => {
 
             let filterAct;
             if (action.payload === "All") {
-                filterAct = state.countries
+                filterAct = state.finded
 
             } else {
 
-                filterAct = state.countries.filter(e => e.activities && e.activities.map(c => c.name).includes(action.payload))
+                filterAct = state.finded.filter(e => e.activities && e.activities.map(c => c.name).includes(action.payload))
 
             }
 
 
             return {
                 ...state,
-                finded: filterAct
+                countries: filterAct
             };
 
         case DELETE_ACTIVTY_BY_ID:
             return {
                 ...state,
-                activitiesAuxiliar: state.activitiesAuxiliar+1,
+                activitiesAuxiliar: state.activitiesAuxiliar + 1,
                 activities: state.activities.filter((el) => el.id !== action.payload)
             }
-            case ORDER_BY:
+        case ORDER_BY:
 
-                let sorted;
-                state.finded.length < 1 ? sorted = [...state.countries] : sorted = [...state.finded]
+            let sorted;
+            sorted = [...state.countries]
 
-                let key = JSON.parse(action.payload)[0];
-                let value = JSON.parse(action.payload)[1];
+            let key = JSON.parse(action.payload)[0];
+            let value = JSON.parse(action.payload)[1];
 
-                if (value === "asc") {
-                    sorted.sort(function (a, b) {
-                        if (a[key] > b[key]) {
-                            return 1;
-                        }
-                        if (a[key] < b[key]) {
-                            return -1
-                        }
-                        return 0
-                    })
-                }
-                if (value === "desc") {
-                    sorted.sort(function (a, b) {
-                        if (a[key] > b[key]) {
-                            return -1;
-                        }
-                        if (a[key] < b[key]) {
-                            return 1
-                        }
-                        return 0
-                    })
-                }
-                return {
-                    ...state,
-                    finded: sorted
-                };
+            if (value === "asc") {
+                sorted.sort(function (a, b) {
+                    if (a[key] > b[key]) {
+                        return 1;
+                    }
+                    if (a[key] < b[key]) {
+                        return -1
+                    }
+                    return 0
+                })
+            }
+            if (value === "desc") {
+                sorted.sort(function (a, b) {
+                    if (a[key] > b[key]) {
+                        return -1;
+                    }
+                    if (a[key] < b[key]) {
+                        return 1
+                    }
+                    return 0
+                })
+            }
+            return {
+                ...state,
+                countries: sorted
+            };
 
 
-            default:
-                return {
-                    ...state
-                };
+        default:
+            return {
+                ...state
+            };
 
 
     }

@@ -1,4 +1,4 @@
-.container{
+.container {
     width: 20%;
     height: auto;
     word-wrap: break-word;
@@ -6,24 +6,24 @@
     padding: 1%;
     border-radius: 2%;
     text-align: center;
-
-    transition: all 0.6s ease  ;
-    &:hover{
-            background-color: #724C9F95;
-
+    transition: all 0.6s ease;
+    &:hover {
+        background-color: #724C9F95;
         transform: translateY(-25px);
-		box-shadow: 0px 3px 30px #0000008B;
-    }
-    .flag{
-       border-radius: 5%;
-     width: 200px;
-     height: 140px;
+        box-shadow: 0px 3px 30px #0000008B;
     }
 
-    .textContainer{
+    .flag {
+        border-radius: 5%;
+        width: 200px;
+        height: 140px;
+    }
+
+    .textContainer {
         text-align: center;
         color: #555555;
-        .countryName{
+
+        .countryName {
             color: black;
             font-weight: bold;
             font-size: 1.6rem;

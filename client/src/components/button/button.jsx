@@ -1,10 +1,9 @@
-import React from 'react'
-import Style from "./button.module.scss"
+import React from "react";
+import Style from "./button.module.scss";
 
 const Button = (props) => {
-  return (
-    <button className={Style.button}  >{props.text}</button>
-  )
-}
+  //Componente boton usado para reciclarse
+  return <button className={Style.button}>{props.text}</button>;
+};
 
-export default Button
+export default Button;
