@@ -18,6 +18,7 @@ const initialState = {
     finded: [],
     countryDetail: {},
     activities: [],
+    activitiesAuxiliar:0,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -45,7 +46,10 @@ const rootReducer = (state = initialState, action) => {
             };
         case CREATE_ACTIVITY:
             return {
+
                 ...state,
+                activitiesAuxiliar: state.activitiesAuxiliar-1,
+
 
             };
         case FILTER_BY_NAME:
@@ -94,6 +98,7 @@ const rootReducer = (state = initialState, action) => {
         case DELETE_ACTIVTY_BY_ID:
             return {
                 ...state,
+                activitiesAuxiliar: state.activitiesAuxiliar+1,
                 activities: state.activities.filter((el) => el.id !== action.payload)
             }
             case ORDER_BY:

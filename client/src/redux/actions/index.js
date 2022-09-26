@@ -48,12 +48,10 @@ export const getAllCountries = () => {
   };
 
   export const getAllActivities = () => {
-    return function (dispatch) {
-      return fetch("http://localhost:3001/activities")
-        .then((response) => response.json())
-        .then((data) => {
-          dispatch({ type: GET_ALL_ACTIVITIES, payload: data });
-        });
+    return async function (dispatch) {
+      const response = await fetch("http://localhost:3001/activities");
+      const data = await response.json();
+      dispatch({ type: GET_ALL_ACTIVITIES, payload: data });
     };
   };
   
