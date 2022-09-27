@@ -11,6 +11,7 @@ export const FILTER_BY_NAME = "FILTER_BY_NAME";
 export const ORDER_BY = "ORDER_BY";
 export const DELETE_ACTIVTY_BY_ID = "DELETE_ACTIVTY_BY_ID";
 export const ERROR_CLEANER = "ERROR_CLEANER";
+export const LOADING_SWITCHER="LOADING_SWITCHER"
 
 
 
@@ -72,6 +73,10 @@ export const orderBy = (orientation) => {
 };
 export const errorCleaner = (payload) => {
   return { type: ERROR_CLEANER, payload, }
+
+};
+export const loadingSwitcher = (payload) => {
+  return { type: LOADING_SWITCHER, payload, }
 
 };
 export const filterByActivity = (activity) => {

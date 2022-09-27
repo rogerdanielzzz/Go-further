@@ -9,7 +9,8 @@ import {
     FILTER_BY_NAME,
     ORDER_BY,
     DELETE_ACTIVTY_BY_ID,
-    ERROR_CLEANER
+    ERROR_CLEANER,
+    LOADING_SWITCHER
 
 
 } from "../actions/index.js";
@@ -21,6 +22,7 @@ const initialState = {
     countryDetail: {},
     activities: [],
     activitiesAuxiliar: 0,
+    isLoading: true
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -28,14 +30,21 @@ const rootReducer = (state = initialState, action) => {
         case ERROR_CLEANER:
             return {
                 ...state,
-                error: {},
+                error: action.payload,
 
             };
+            case LOADING_SWITCHER:
+                return {
+                    ...state,
+                    isLoading: action.payload,
+    
+                };    
         case GET_ALL_COUNTRIES:
             return {
                 ...state,
                 finded: action.payload,
                 countries: action.payload,
+                isLoading:false
             };
         case GET_COUNTRY_DETAILS:
             return {

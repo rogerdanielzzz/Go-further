@@ -7,24 +7,32 @@ import CountriesContainer from "./components/countriesContainer/CountriesContain
 import CountryDetails from "./components/CountryDetails/CountryDetails.jsx";
 import CreateSection from "./components/CreateSection/CreateSection.jsx";
 import ActivitiesSection from "./components/ActivitiesSection/ActivitiesSection.jsx"
+import LandingPage from "./components/LandingPage/LandingPage.jsx";
 
 function App() {
   return (
     <div className="App">
 
       
-      <Navbar/>
+     
+      <Route exact path="/">
+        <LandingPage/>
+      </Route>
       <Route exact path="/countries/:idPais">
+      <Navbar/>
         <CountryDetails/>
       </Route>
       <Route exact path="/countries">
+      <Navbar/>
         <CountriesContainer />
       </Route>
      
       <Route exact path="/create">
+      <Navbar/>
         <CreateSection/>
       </Route>
       <Route exact path="/activities">
+      <Navbar/>
         <ActivitiesSection/>
       </Route>
     </div>
