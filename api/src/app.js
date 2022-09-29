@@ -8,8 +8,6 @@ const cors = require('cors');
 require('./db.js');
 
 const server = express();
-let urlBase= "https://go-further.up.railway.app"
-let bbBBase= "https://go-further.up.railway.app"
 
 server.name = 'API';
 
@@ -24,8 +22,8 @@ server.use((req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
   next();
 });
-app.use(cors({
-  origin: ['"http://localhost:3000"', 'https://go-further.up.railway.app'],
+server.use(cors({
+  origin: ["http://localhost:3000", 'https://go-further.up.railway.app'],
   methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 }));
 
