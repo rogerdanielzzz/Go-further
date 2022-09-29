@@ -12,8 +12,7 @@ const {
 } = require("./controllers/activityController");
 
 const router = Router();
-let urlBase= "https://go-further.up.railway.app"
-let bbBBase= "https://go-further.up.railway.app"
+
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
