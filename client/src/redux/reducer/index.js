@@ -88,11 +88,14 @@ const rootReducer = (state = initialState, action) => {
                 return {
                     ...state,
                     error: arrFiltered,
+                    currentPage:1,
+
                 };
             } else
                 return {
                     ...state,
                     countries: arrFiltered,
+                    currentPage:1,
 
                 };
         case FILTER_BY_CONTINENT:

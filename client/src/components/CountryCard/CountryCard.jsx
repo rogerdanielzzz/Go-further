@@ -16,6 +16,7 @@ const CountryCard = (props) => {
                 <h3 className={Style.subRegion}>Sub Area: {props.subregion} </h3>
 
                 <h3 className={Style.population}>Population: {formatedPopulation} </h3>
+
                 <Link to={`/countries/${props.id}`}>
                     <Button text="See details" />
                 </Link>

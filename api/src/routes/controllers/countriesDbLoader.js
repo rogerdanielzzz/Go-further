@@ -13,6 +13,7 @@ const countriesDbLoader = async () => {
       area: el.area,
       population: el.population,
       flags: el.flags[1] || el.flags[0],
+      
     };
   });
   const saver = () => {
@@ -29,6 +30,7 @@ const countriesDbLoader = async () => {
           area: el.area,
           population: el.population,
           flags: el.flags,
+          
         },
       }).catch((err) => {
         console.log(err);

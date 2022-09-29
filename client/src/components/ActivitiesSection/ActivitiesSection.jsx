@@ -33,7 +33,7 @@ const ActivitiesSection = () => {
         {isLoading? <LoadingScreen/> : activitiesRedux.length > 0 ? activitiesRedux.map((el) => (
           <ActivityCard onDelete={() => handleDelete(el.id)} key={el.id} id={el.id}
             image={el.image} name={el.name} difficulty={el.difficulty} duration={el.duration} season={el.season} countries={el.countries} />
-        )) : <h1>With out activities, you could create one</h1>
+        )) : <h1 className={Style.message}>With out activities, you could create one</h1>
         }
 
       </div>

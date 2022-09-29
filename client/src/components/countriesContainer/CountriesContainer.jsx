@@ -13,11 +13,11 @@ const CountriesContainer = () => {
   const isLoading = useSelector((state)=> state.isLoading)
   const dispatch = useDispatch();
   const page = useSelector((state)=> state.currentPage)
+  const [elementsPerPage] = useState(8);
 
 
-  const [elementsPerPage] = useState(10);
-  const indexTo = page * elementsPerPage; //10
-  const indexFrom = indexTo - elementsPerPage; //0
+  const indexTo = page * elementsPerPage; //
+  const indexFrom = indexTo - elementsPerPage; //
   const countriesToRender = countries.slice(indexFrom, indexTo); //arrray with 10 countries
   const paginate = (el) => dispatch(pageSwitcher(el));
   
