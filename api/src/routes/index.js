@@ -13,6 +13,7 @@ const {
 
 const router = Router();
 let urlBase= "https://go-further.up.railway.app"
+let bbBBase= "https://go-further.up.railway.app"
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
@@ -21,14 +22,14 @@ let urlBase= "https://go-further.up.railway.app"
 //router.get('/countries', getAllCountries);
 
 router.get("/", async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', urlBase);
+  
   
     res.send("Backend Go Further");
 
 });
 
 router.get("/countries", async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', urlBase);
+  
 
   const { name } = req.query;
   try {
@@ -40,7 +41,7 @@ router.get("/countries", async (req, res) => {
   }
 });
 router.get("/countries/:idpais", async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', urlBase);
+  
 
   const { idpais } = req.params;
 
@@ -54,7 +55,7 @@ router.get("/countries/:idpais", async (req, res) => {
 });
 
 router.get("/activities", async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', urlBase);
+  
 
   try {
     res.status(200).json(await getAllActivities());
@@ -66,7 +67,7 @@ router.get("/activities", async (req, res) => {
 });
 
 router.post("/activities", async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', urlBase);
+  
 
   try {
     res.status(201).json({
@@ -80,7 +81,7 @@ router.post("/activities", async (req, res) => {
 });
 
 router.delete("/activities/:id", async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', urlBase);
+  
 
   let id = req.params.id
   try {
