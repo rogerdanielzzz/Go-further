@@ -15,7 +15,7 @@ export const LOADING_SWITCHER="LOADING_SWITCHER";
 export const PAGE_SWITCHER="PAGE_SWITCHER"
 
 
-let urlBase= "go-further-api.up.railway.app"
+let urlBase= "https://go-further-api.up.railway.app"
 
 
 export const getAllCountries = () => {
