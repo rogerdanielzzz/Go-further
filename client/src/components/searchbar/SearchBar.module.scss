@@ -46,3 +46,26 @@
 
 
 }
+@media only screen and (max-width: 880px) {
+
+  .SearchBarContainer {
+      flex-wrap: wrap;
+
+      .input {
+         
+        
+       
+    
+
+          
+              margin: 2px 0;
+            
+            min-width: 31vh;
+          
+      }
+      .searchButton{
+        min-width: 30vh;
+      }
+  }
+  
+}

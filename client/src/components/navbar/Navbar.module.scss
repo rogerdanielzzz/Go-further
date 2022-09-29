@@ -19,3 +19,15 @@
     }
 
 }
+
+@media only screen and (max-width: 880px) {
+
+   .NavContainer{
+    max-width: 100vw;
+
+    justify-content: center;
+    .Branding{
+        margin: 0;
+    }
+   }
+  }

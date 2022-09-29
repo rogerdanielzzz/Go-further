@@ -43,48 +43,92 @@
         .Branding {
             display: grid;
             place-content: center;
-    
+
 
             .welcomeText {
                 background-color: #f7f3ff99;
                 border-radius: 1rem;
                 margin: 5% 10%;
                 padding: 2%;
-                color:#6a5acd;
+                color: #6a5acd;
                 font-size: 1.3rem;
                 align-self: center;
                 font-style: italic;
-     
+
             }
-            .buttonContainer{
+
+            .buttonContainer {
                 margin-left: auto;
                 margin-right: auto;
 
-                .welcomeButton{
+                .welcomeButton {
                     border: solid #5C19AE;
                     border-radius: 10rem;
                     padding: .5rem 1rem;
-                   
-    
+
+
                     color: #FFF;
                     background-color: #5C19AE;
                     transition: ease 0.4s;
                     font-size: 1rem;
-                  
-              
+
+
                     background-color: #5C19AE;
                     ;
-              
+
                     &:hover {
-                      
+
                         color: yellow;
                     }
                 }
 
 
             }
-         
 
+
+        }
+    }
+}
+
+@media only screen and (max-width: 880px) {
+
+    .LandingContainer {
+      
+        background-image: url(../../img/bgVer.jpg);
+        background-size: cover;
+        flex-wrap: wrap;
+        max-width: 100vw;
+        align-items: center;
+        margin-top: auto;
+
+        .leftContainer {
+            
+            background-color: transparent;
+            min-width: 100vw;
+            min-height: auto;
+
+
+            .Branding {
+                .NavTitulo{
+                color: #5C19AE;
+                font-weight: 700;
+            }
+            }
+        }
+        .rightContainer{
+            
+
+            background-image: none;
+            min-width: 100vw;
+            min-height: auto;
+            margin-bottom: auto;
+             .Branding {
+                .welcomeText{
+                
+                    color: black;
+                    
+                margin:0;}
+            }
         }
     }
 }

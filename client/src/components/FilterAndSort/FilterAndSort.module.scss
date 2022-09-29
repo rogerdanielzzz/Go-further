@@ -1,11 +1,14 @@
 .toolsContainer {
     display: flex;
+
+
     flex-wrap: wrap;
 
     .selection {
         display: flex;
         justify-content: space-around;
         align-items: center;
+
         .bar {
             cursor: pointer;
             margin-left: 10px;
@@ -16,6 +19,24 @@
             font-size: 1rem;
             color: #5C19AE;
             background-color: white;
+        }
+    }
+}
+
+@media only screen and (max-width: 880px) {
+
+    .toolsContainer {
+        flex-wrap: wrap;
+
+        .selection {
+           
+            flex-wrap: wrap;
+
+            .bar {
+                margin: 2px 0;
+              
+              min-width: 35vh;
+            }
         }
     }
 }

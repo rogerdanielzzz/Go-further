@@ -50,3 +50,15 @@
         }
     }
 }
+
+@media only screen and (max-width: 880px) {
+ 
+    .container{
+      width : auto;
+      &:hover {
+          background-color: none;
+          transform: none;
+          box-shadow: none;
+      }
+    } 
+  }
