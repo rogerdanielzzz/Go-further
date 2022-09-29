@@ -15,12 +15,12 @@ export const LOADING_SWITCHER="LOADING_SWITCHER";
 export const PAGE_SWITCHER="PAGE_SWITCHER"
 
 
-
+let urlBase= "http://localhost:3001"
 
 
 export const getAllCountries = () => {
   return function (dispatch) {
-    return fetch("http://localhost:3001/countries")
+    return fetch(`${urlBase}/countries`)
       .then((response) => response.json())
       .then((data) => {
 
@@ -32,7 +32,7 @@ export const getAllCountries = () => {
 
 export const getCountryDetails = (idPais) => {
   return function (dispatch) {
-    return fetch(`http://localhost:3001/countries/${idPais}`)
+    return fetch(`${urlBase}/countries/${idPais}`)
       .then((response) => response.json())
       .then((data) => {
 
@@ -43,7 +43,7 @@ export const getCountryDetails = (idPais) => {
 
 export const getCountryByQuery = (query) => {
   return function (dispatch) {
-    return fetch(`http://localhost:3001/countries?name=${query}`)
+    return fetch(`${urlBase}/countries?name=${query}`)
       .then((response) => response.json())
       .then((data) => {
         dispatch({ type: GET_COUNTRY_BY_QUERY, payload: data });
@@ -55,7 +55,7 @@ export const getCountryByQuery = (query) => {
 
 export const getAllActivities = () => {
   return async function (dispatch) {
-    const response = await fetch("http://localhost:3001/activities");
+    const response = await fetch(`${urlBase}/activities`);
     const data = await response.json();
     dispatch({ type: GET_ALL_ACTIVITIES, payload: data });
   };
@@ -90,7 +90,7 @@ export const filterByActivity = (activity) => {
 export const createActivity = (activity) => {
   return async function (dispatch) {
     try {
-      let res = await Axios.post("http://localhost:3001/activities", activity);
+      let res = await Axios.post(`${urlBase}/activities`, activity);
       return dispatch({
         type: CREATE_ACTIVITY,
         payload: res.data,
@@ -104,7 +104,7 @@ export const createActivity = (activity) => {
 export const deleteActivityById = (id) => {
   return async function (dispatch) {
     try {
-      let res = await Axios.delete(`http://localhost:3001/activities/${id}`);
+      let res = await Axios.delete(`${urlBase}/activities/${id}`);
       return dispatch({
         type: DELETE_ACTIVTY_BY_ID,
         payload: res.data,

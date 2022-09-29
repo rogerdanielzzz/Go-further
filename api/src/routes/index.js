@@ -19,6 +19,12 @@ const router = Router();
 
 //router.get('/countries', getAllCountries);
 
+router.get("/", async (req, res) => {
+  
+    res.send("Backend Go Further");
+
+});
+
 router.get("/countries", async (req, res) => {
   const { name } = req.query;
   try {
