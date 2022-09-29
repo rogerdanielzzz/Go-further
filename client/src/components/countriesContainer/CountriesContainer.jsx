@@ -24,7 +24,7 @@ const CountriesContainer = () => {
 
   useEffect(() => {
     document.title = "Go Further | Countries";
-    loadingSwitcher(true)
+    dispatch(loadingSwitcher(true))
     dispatch(getAllCountries());
     dispatch(getAllActivities());
   }, [dispatch]);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { createActivity, getAllCountries } from "../../redux/actions/index.js";
+import { createActivity, getAllCountries, loadingSwitcher } from "../../redux/actions/index.js";
 import { errorsChecker } from "../Utilities/utilities";
 import Style from "./CreateSection.module.scss";
 
@@ -100,7 +100,9 @@ function Form() {
       if (input.image === "") {
         input.image = null;
       }
-      dispatch(createActivity(input));
+      dispatch(loadingSwitcher(true))
+      dispatch(createActivity(input)).then(navigate.push("/activities"));
+    
 
       navigate.push("/activities");
     }
