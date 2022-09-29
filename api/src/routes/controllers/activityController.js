@@ -2,7 +2,7 @@ const { Country, Activity } = require("../../db.js");
 
 const createActivity = async (obj) => {
   const { name, difficulty, duration, season, countries, image } = obj;
-let nameCheck= name.charAt(0).toUpperCase() + name.slice(1);
+let nameCheck= name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 console.log(nameCheck)
   if (name && difficulty && duration && season && countries) {
     const [activity, created] = await Activity.findOrCreate({

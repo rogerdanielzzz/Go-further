@@ -8,32 +8,40 @@ import CountryDetails from "./components/CountryDetails/CountryDetails.jsx";
 import CreateSection from "./components/CreateSection/CreateSection.jsx";
 import ActivitiesSection from "./components/ActivitiesSection/ActivitiesSection.jsx"
 import LandingPage from "./components/LandingPage/LandingPage.jsx";
+import FooterSeccion from "./components/FooterSeccion/FooterSeccion.jsx";
 
 function App() {
   return (
     <div className="App">
 
-      
-     
+
+
       <Route exact path="/">
-        <LandingPage/>
+        <LandingPage />
       </Route>
       <Route exact path="/countries/:idPais">
-      <Navbar/>
-        <CountryDetails/>
+        <Navbar />
+        <CountryDetails />
+        <FooterSeccion />
       </Route>
       <Route exact path="/countries">
-      <Navbar/>
+        <Navbar />
         <CountriesContainer />
+        <FooterSeccion />
+
       </Route>
-     
+
       <Route exact path="/create">
-      <Navbar/>
-        <CreateSection/>
+        <Navbar />
+        <CreateSection />
+        <FooterSeccion />
+
       </Route>
       <Route exact path="/activities">
-      <Navbar/>
-        <ActivitiesSection/>
+        <Navbar />
+        <ActivitiesSection />
+        <FooterSeccion />
+
       </Route>
     </div>
   );

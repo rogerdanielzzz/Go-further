@@ -13,7 +13,7 @@ const SearchBar = () => {
   const [texto, setTexto] = useState("") //Estado para guardar valor del input
 
   const handleChange = (e) => {
-    dispatch(errorCleaner())
+    dispatch(errorCleaner(false))
     setTexto(e.target.value)
     dispatch(filterByName(e.target.value))
   }

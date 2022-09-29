@@ -1,0 +1,41 @@
+.footerContainer {
+    margin-top: auto;
+    padding-top: 10px;
+    background-color: #724C9F;
+  
+    min-width: 100%;
+
+    .logo {
+        display: flex;
+        justify-content: center;
+
+        .Branding {
+            display: flex;
+
+
+            .NavTitulo {
+                color: white;
+                align-self: center;
+                font-style: italic;
+            }
+
+            .icon {
+                max-width: 40px;
+                max-height: 40px;
+
+            }
+        }
+    }
+
+
+    .autorCont {
+        display: flex;
+        justify-content: center;
+        color: rgb(156, 156, 156);
+    }
+
+
+
+
+
+}

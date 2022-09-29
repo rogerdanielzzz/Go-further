@@ -22,4 +22,18 @@
       color: orange;
     }
   }
+  .currentPage{
+    text-justify: center;
+    width: 2rem;
+    padding: 2px 5px;
+    border: none;
+    border-radius: 50%;
+    color: #FFF;
+    transition: ease 0.4s;
+    margin: 0px 2px;
+    font-family: var(--font-poppins);
+    background-color: orangered;
+    
+    
+  }
 }

@@ -1,9 +1,10 @@
 .sectionContainer {
-    padding-bottom: 5%;
     background-image: url(../../img/bgx.jpg);
     background-size: cover;
+    min-height: calc(100vh - 162px);
 
     .boxContainer {
+        
         padding-top: 1%;
         padding-left: 25%;
         padding-right: 25%;
@@ -14,17 +15,21 @@
         width: 50%;
         border-radius: 15px;
         text-align: center;
-        .textContainer{
+        
+
+        .textContainer {
             border-radius: 20rem;
             background-color: #00000010;
             font-weight: bold;
         }
-        .formContainer{
-            .errorText{
+
+        .formContainer {
+            .errorText {
                 font-size: 0.8rem;
                 font-weight: bold;
                 color: red;
             }
+
             input,
             select {
                 margin-left: 10px;
@@ -36,27 +41,31 @@
                 color: #5C19AE;
                 background-color: white;
                 box-sizing: border-box;
+
             }
-            .countriesList{
+
+            .countriesList {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
-                div{
+
+                div {
                     background-color: orange;
                     display: flex;
                     border-radius: 15px;
                     margin: 2vh 3px;
-                  }
-                  li {
+                }
+
+                li {
                     margin: 1vh 0.5vh;
                     padding: 1vh 0 1vh 1vh;
                     color: black;
-                    font-size: 3vh; 
-                  }
-            
-               
-            
-                  .deleteButton{
+                    font-size: 3vh;
+                }
+
+
+
+                .deleteButton {
                     margin-top: 2px;
                     margin-right: 2px;
                     width: 20px;
@@ -66,12 +75,13 @@
                     font-weight: bold;
                     border: none;
                     border-radius: 50%;
-                  }
-              }
-              .createButton{
+                }
+            }
+
+            .createButton {
                 margin-top: 5px;
                 margin-left: 10px;
-                width: 60%;
+
                 border: solid #5C19AE;
                 border-radius: 10rem;
                 padding: .5rem 1rem;
@@ -79,31 +89,32 @@
                 transition: ease 0.4s;
                 font-size: 0.8rem;
                 ;
-    
+
                 background-color: #5C19AE;
                 ;
                 color: white;
                 background-color: #5C19AE;
-                box-sizing: border-box;
 
-                &:hover{
-                  color: #5C19AE;
+
+                &:hover {
+                    color: #5C19AE;
                     background-color: white;
                     cursor: pointer;
                 }
-                &:disabled{
+
+                &:disabled {
                     border-color: gray;
                     color: black;
                     background-color: gray;
-                    
-                    &:hover{
-                        
+
+                    &:hover {
+
                         cursor: default;
-                        
+
                     }
 
                 }
-                
+
             }
         }
 
@@ -114,10 +125,3 @@
 
     }
 }
-
-
-
-  
-   
-  
-  
