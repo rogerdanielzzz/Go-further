@@ -15,11 +15,12 @@ const ActivitiesSection = () => {
   const isLoading = useSelector((state)=> state.isLoading)
 
   const handleDelete = async (id) => {
-    dispatch(deleteActivityById(id))
+    dispatch(loadingSwitcher(true))
+    dispatch(deleteActivityById(id)).then(dispatch(loadingSwitcher(false)))
   }
 
   useEffect(() => {
-    loadingSwitcher(true)
+    dispatch(loadingSwitcher(true))
     document.title = "Go Further | Activities";
     dispatch(getAllActivities())
     dispatch(getAllCountries())
